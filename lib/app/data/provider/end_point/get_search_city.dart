@@ -5,7 +5,7 @@ class GetSearchCity extends AbsensiProvider {
   Future<SearchCityModel> getSearchCity(String city) async {
     String authToken = userDataController.token.value;
     String bearerToken = "Bearer $authToken";
-    int maxRetry = 3; // Jumlah maksimal percobaan
+    int maxRetry = 100; // Jumlah maksimal percobaan
 
     for (int retry = 0; retry < maxRetry; retry++) {
       final response = await get("$url" "shop/search/city/$city", headers: {
@@ -19,13 +19,15 @@ class GetSearchCity extends AbsensiProvider {
         // Kesalahan sisi client (4xx)
         print(
             "Kesalahan sisi client saat mengambil . Kode status: ${response.statusCode}");
-        print('shop/search/city/{$city}');
+        print('shop/search/city/$city');
         // Anda dapat menampilkan pesan kesalahan khusus untuk kesalahan sisi client
         throw Exception("Kesalahan sisi client saat mengambil ");
       } else if (response.statusCode! >= 500 && response.statusCode! < 600) {
         // Kesalahan sisi server (5xx)
         print(
             "Kesalahan sisi server saat mengambil . Kode status: ${response.statusCode}");
+        print('shop/search/city/$city');
+        print('$authToken');
         // Anda dapat menampilkan pesan kesalahan khusus untuk kesalahan sisi server
         throw Exception("Kesalahan sisi server saat mengambil ");
       } else {

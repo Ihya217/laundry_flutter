@@ -15,7 +15,7 @@ class UserDataController extends GetxController {
     prefs.setInt('userId', userData.id);
     prefs.setString('username', userData.username);
     prefs.setString('email', userData.email);
-    prefs.setString('token', token.value);
+    prefs.setString('token', userData.token);
 
     // Update nilai variabel observables
     userId.value = userData.id;

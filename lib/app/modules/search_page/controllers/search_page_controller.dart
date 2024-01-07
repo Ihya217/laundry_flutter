@@ -24,7 +24,6 @@ class SearchPageController extends GetxController {
 
       if (searchCityData != null) {
         searchCityModel.value = SearchCityModel(data: searchCityData);
-        // Set nilai promoId dan descriptions dengan data promo pertama
       }
     } catch (e) {
       print("Terjadi kesalahan saat mengambil data: $e");

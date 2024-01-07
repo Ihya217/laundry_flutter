@@ -40,6 +40,12 @@ Future<void> initializeApp() async {
 Future<void> initializeUserData() async {
   final UserDataController userDataController = Get.put(UserDataController());
   await userDataController.loadUserData();
+
+  String token = userDataController.token.value;
+  String nama = userDataController.name.value;
+
+  print(token);
+  print(nama);
 }
 
 void initializeMySingleton() {
