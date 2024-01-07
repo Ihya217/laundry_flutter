@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundry_flutter/app/modules/search_page/views/search_page_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -11,7 +10,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Get.theme.primaryColor,
-        title: Text(
+        title: const Text(
           'Laundry Nime',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -20,9 +19,9 @@ class HomeView extends GetView<HomeController> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
-              Get.toNamed('/search-page');
+              Get.snackbar('Belum Berfungsi', 'Fitur belum dinyalakan');
             },
           ),
           // Tambahkan ikon atau widget lain di sini jika diperlukan
@@ -33,7 +32,7 @@ class HomeView extends GetView<HomeController> {
           controller.getPromoFromApi();
           controller.getShopFromApi();
         },
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
       body: Container(
         color: Colors.grey[200],
@@ -44,7 +43,7 @@ class HomeView extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Padding(
@@ -62,7 +61,7 @@ class HomeView extends GetView<HomeController> {
                   height: 180.0,
                   child: Obx(
                     () => controller.isLoading.value
-                        ? CircularProgressIndicator()
+                        ? Center(child: const Text('Memuat Data..'))
                         : ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount:
@@ -72,7 +71,8 @@ class HomeView extends GetView<HomeController> {
                                   controller.promoModel.value.data![index];
                               return Container(
                                 width: 200.0,
-                                margin: EdgeInsets.symmetric(horizontal: 4.0),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
                                 child: Card(
                                   child: Padding(
                                     padding:
@@ -100,20 +100,20 @@ class HomeView extends GetView<HomeController> {
                                                 children: [
                                                   Text(
                                                     promo.shop?.name ?? '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 2.0),
+                                                  const SizedBox(height: 2.0),
                                                   Text(
                                                     promo.description ?? '',
                                                     maxLines: 1,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                   ),
-                                                  SizedBox(height: 2.0),
+                                                  const SizedBox(height: 2.0),
                                                   Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -121,7 +121,7 @@ class HomeView extends GetView<HomeController> {
                                                     children: [
                                                       Text(
                                                         "\Rp.${promo.oldPrice}",
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           decoration:
                                                               TextDecoration
                                                                   .lineThrough,
@@ -130,7 +130,7 @@ class HomeView extends GetView<HomeController> {
                                                       ),
                                                       Text(
                                                         "\Rp.${promo.newPrice}",
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.red,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -147,13 +147,13 @@ class HomeView extends GetView<HomeController> {
                                           top: 5.0,
                                           left: 4.0,
                                           child: Container(
-                                            padding: EdgeInsets.all(4.0),
+                                            padding: const EdgeInsets.all(4.0),
                                             decoration: BoxDecoration(
                                               color: Colors.red,
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               'Promo',
                                               style: TextStyle(
                                                   color: Colors.white,
@@ -171,7 +171,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 const Padding(
                   padding: EdgeInsets.only(
                       left: 14.0), // Sesuaikan dengan margin yang diinginkan
@@ -187,7 +187,7 @@ class HomeView extends GetView<HomeController> {
                   height: 180.0,
                   child: Obx(
                     () => controller.isLoading.value
-                        ? CircularProgressIndicator()
+                        ? Center(child: const Text('Memuat Data..'))
                         : ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount:
@@ -197,7 +197,8 @@ class HomeView extends GetView<HomeController> {
                                   controller.shopModel.value.data![index];
                               return Container(
                                 width: 200.0,
-                                margin: EdgeInsets.symmetric(horizontal: 4.0),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
                                 child: Card(
                                   child: Padding(
                                     padding:
@@ -225,20 +226,20 @@ class HomeView extends GetView<HomeController> {
                                                 children: [
                                                   Text(
                                                     shop.name ?? '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 2.0),
+                                                  const SizedBox(height: 2.0),
                                                   Text(
                                                     shop.description ?? '',
                                                     maxLines: 1,
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                   ),
-                                                  SizedBox(height: 2.0),
+                                                  const SizedBox(height: 2.0),
                                                   Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -246,7 +247,7 @@ class HomeView extends GetView<HomeController> {
                                                     children: [
                                                       Text(
                                                         "\Rp.${shop.price}",
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.red,
                                                           fontWeight:
                                                               FontWeight.bold,

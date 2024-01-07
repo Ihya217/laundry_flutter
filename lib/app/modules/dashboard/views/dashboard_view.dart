@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/modules/home/views/home_view.dart';
@@ -10,6 +11,9 @@ import '../controllers/dashboard_controller.dart';
 class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Color.fromARGB(255, 18, 26, 44),
+    ));
     return GetBuilder<DashboardController>(builder: (controller) {
       return Scaffold(
         body: SafeArea(
