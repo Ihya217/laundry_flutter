@@ -1,19 +1,19 @@
-import 'package:laundry_flutter/app/data/models/promo_model.dart';
+import 'package:laundry_flutter/app/data/models/shop_model.dart';
 import 'package:laundry_flutter/app/data/provider/absensi_provider.dart';
 
-class GetPromo extends AbsensiProvider {
-  Future<PromoModel> getPromo() async {
+class GetShop extends AbsensiProvider {
+  Future<ShopModel> getShop() async {
     String authToken = userDataController.token.value;
     String bearerToken = "Bearer $authToken";
     int maxRetry = 3; // Jumlah maksimal percobaan
 
     for (int retry = 0; retry < maxRetry; retry++) {
-      final response = await get("$url" "promo", headers: {
+      final response = await get("$url" "shop", headers: {
         "Authorization": bearerToken,
       });
 
       if (response.statusCode == 200) {
-        final responseData = PromoModel.fromJson(response.body);
+        final responseData = ShopModel.fromJson(response.body);
         return responseData;
       } else if (response.statusCode! >= 400 && response.statusCode! < 500) {
         // Kesalahan sisi client (4xx)

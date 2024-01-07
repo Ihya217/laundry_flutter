@@ -12,10 +12,6 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(builder: (controller) {
       return Scaffold(
-        appBar: AppBar(
-          title: const Text('DashboardView'),
-          centerTitle: true,
-        ),
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,

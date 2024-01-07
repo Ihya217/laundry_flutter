@@ -8,6 +8,7 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final UserDataController userDataController = Get.put(UserDataController());
+  final HomeController homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class ProfileView extends GetView<ProfileController> {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                controller.logOut();
+                homeController.logOutDialog(context);
               },
               child: const Text('Log Out'),
             ),

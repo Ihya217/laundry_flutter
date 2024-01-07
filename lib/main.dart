@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
+import 'package:laundry_flutter/app/modules/profile/controllers/profile_controller.dart';
 import 'package:laundry_flutter/app/singleton/my_singleton.dart';
 import 'package:laundry_flutter/app/theme/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,6 +32,7 @@ Future<void> initializeApp() async {
   await initializeUserData();
   initializeMySingleton();
   await initializeAuthController();
+  initializeProfil();
 }
 
 Future<void> initializeUserData() async {
@@ -46,6 +48,10 @@ Future<void> initializeAuthController() async {
   final authController = AuthController();
   authController.checkLoginStatus();
   authController.isLoggedIn.value;
+}
+
+Future<void> initializeProfil() async {
+  final ProfileController profileController = Get.put(ProfileController());
 }
 
 Future<String> determineInitialRoute() async {

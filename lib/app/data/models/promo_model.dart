@@ -1,103 +1,138 @@
 class PromoModel {
-  final int id;
-  final String image;
-  final int shopId;
-  final int oldPrice;
-  final int newPrice;
-  final String description;
-  final String createdAt;
-  final String updatedAt;
-  final Shop shop;
+  List<Data>? data;
 
-  PromoModel({
-    required this.id,
-    required this.image,
-    required this.shopId,
-    required this.oldPrice,
-    required this.newPrice,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.shop,
-  });
+  PromoModel({this.data});
 
-  factory PromoModel.fromJson(Map<String, dynamic> json) {
-    return PromoModel(
-      id: json['id'],
-      image: json['image'],
-      shopId: json['shop_id'],
-      oldPrice: json['old_price'],
-      newPrice: json['new_price'],
-      description: json['description'],
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
-      shop: Shop.fromJson(json['shop']),
-    );
+  PromoModel.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(Data.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Data {
+  int? id;
+  String? image;
+  int? shopId;
+  num? oldPrice;
+  num? newPrice;
+  String? description;
+  String? createdAt;
+  String? updatedAt;
+  Shop? shop;
+
+  Data(
+      {this.id,
+      this.image,
+      this.shopId,
+      this.oldPrice,
+      this.newPrice,
+      this.description,
+      this.createdAt,
+      this.updatedAt,
+      this.shop});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    image = json['image'];
+    shopId = json['shop_id'];
+    oldPrice = json['old_price'];
+    newPrice = json['new_price'];
+    description = json['description'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    shop = json['shop'] != null ? new Shop.fromJson(json['shop']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['image'] = this.image;
+    data['shop_id'] = this.shopId;
+    data['old_price'] = this.oldPrice;
+    data['new_price'] = this.newPrice;
+    data['description'] = this.description;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    if (this.shop != null) {
+      data['shop'] = this.shop!.toJson();
+    }
+    return data;
   }
 }
 
 class Shop {
-  final int id;
-  final String image;
-  final String name;
-  final String location;
-  final String city;
-  final int delivery;
-  final int pickup;
-  final String whatsapp;
-  final String description;
-  final int price;
-  final double rate;
-  final String createdAt;
-  final String updatedAt;
+  int? id;
+  String? image;
+  String? name;
+  String? location;
+  String? city;
+  int? delivery;
+  int? pickup;
+  String? whatsapp;
+  String? description;
+  num? price;
+  num? rate;
+  String? createdAt;
+  String? updatedAt;
 
-  Shop({
-    required this.id,
-    required this.image,
-    required this.name,
-    required this.location,
-    required this.city,
-    required this.delivery,
-    required this.pickup,
-    required this.whatsapp,
-    required this.description,
-    required this.price,
-    required this.rate,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+  Shop(
+      {this.id,
+      this.image,
+      this.name,
+      this.location,
+      this.city,
+      this.delivery,
+      this.pickup,
+      this.whatsapp,
+      this.description,
+      this.price,
+      this.rate,
+      this.createdAt,
+      this.updatedAt});
 
-  factory Shop.fromJson(Map<String, dynamic> json) {
-    return Shop(
-      id: json['id'],
-      image: json['image'],
-      name: json['name'],
-      location: json['location'],
-      city: json['city'],
-      delivery: json['delivery'],
-      pickup: json['pickup'],
-      whatsapp: json['whatsapp'],
-      description: json['description'],
-      price: json['price'],
-      rate: json['rate'].toDouble(),
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
-    );
+  Shop.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    image = json['image'];
+    name = json['name'];
+    location = json['location'];
+    city = json['city'];
+    delivery = json['delivery'];
+    pickup = json['pickup'];
+    whatsapp = json['whatsapp'];
+    description = json['description'];
+    price = json['price'];
+    rate = json['rate'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
-}
 
-class PromoData {
-  final List<PromoModel> data;
-
-  PromoData({
-    required this.data,
-  });
-
-  factory PromoData.fromJson(Map<String, dynamic> json) {
-    List<PromoModel> promoList = List<PromoModel>.from(
-      json['data'].map((promo) => PromoModel.fromJson(promo)),
-    );
-
-    return PromoData(data: promoList);
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['image'] = this.image;
+    data['name'] = this.name;
+    data['location'] = this.location;
+    data['city'] = this.city;
+    data['delivery'] = this.delivery;
+    data['pickup'] = this.pickup;
+    data['whatsapp'] = this.whatsapp;
+    data['description'] = this.description;
+    data['price'] = this.price;
+    data['rate'] = this.rate;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
   }
 }
