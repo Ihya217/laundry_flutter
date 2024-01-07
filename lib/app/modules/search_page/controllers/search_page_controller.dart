@@ -14,6 +14,10 @@ class SearchPageController extends GetxController {
   final RxList<String> searchResults = <String>[].obs;
   RxBool isLoading = false.obs;
 
+  void resetModel() {
+    searchCityModel.value = SearchCityModel(data: []);
+  }
+
   Future<void> getSearchCity() async {
     isLoading.value = true;
     String city = searchController.text;
@@ -24,6 +28,8 @@ class SearchPageController extends GetxController {
 
       if (searchCityData != null) {
         searchCityModel.value = SearchCityModel(data: searchCityData);
+      } else {
+        searchCityModel.value = SearchCityModel(data: []);
       }
     } catch (e) {
       print("Terjadi kesalahan saat mengambil data: $e");

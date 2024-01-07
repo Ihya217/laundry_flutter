@@ -34,6 +34,7 @@ class SearchPageView extends GetView<SearchPageController> {
                     backgroundColor: Get.theme.primaryColor,
                   ),
                   onPressed: () {
+                    controller.resetModel();
                     controller.getSearchCity();
                   },
                   child: Icon(Icons.search),
