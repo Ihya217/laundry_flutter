@@ -26,6 +26,7 @@ class LoginPageController extends GetxController {
       String password = passwordController.text;
 
       var value = await AppServiceManager.login(email, password);
+      print('Raw Response: $value');
 
       if (value != null && value.isNotEmpty) {
         // Respons adalah Map<String, dynamic>
@@ -73,6 +74,8 @@ class LoginPageController extends GetxController {
       } else {
         // Tangani respons yang kosong atau tidak valid sesuai kebutuhan
         print("Respons tidak valid atau kosong");
+        print("Email: ${usernameController.text}");
+        print("Password: ${passwordController.text}");
         Get.snackbar(
           'Login Gagal',
           'Email atau Password salah',

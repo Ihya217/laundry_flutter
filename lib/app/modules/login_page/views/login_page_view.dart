@@ -57,7 +57,7 @@ class LoginPageView extends GetView<LoginPageController> {
                     child: TextField(
                       controller: loginController.usernameController,
                       decoration: const InputDecoration(
-                        labelText: 'Username',
+                        labelText: 'Email',
                         prefixIcon: Icon(Icons.person),
                       ),
                     ),
