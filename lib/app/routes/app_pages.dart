@@ -21,6 +21,7 @@ class AppPages {
   final AuthController authController = Get.put(AuthController());
   static const String dashboard = '/dashboard';
   static const String login = '/login';
+  static const String search = '/search-page';
 
   static const INITIAL = Routes.LOGIN_PAGE;
 
@@ -47,7 +48,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SEARCH_PAGE,
-      page: () => const SearchPageView(),
+      page: () => SearchPageView(),
       binding: SearchPageBinding(),
     ),
     GetPage(

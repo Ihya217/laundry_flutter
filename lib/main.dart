@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
 import 'package:laundry_flutter/app/modules/profile/controllers/profile_controller.dart';
+import 'package:laundry_flutter/app/modules/search_page/controllers/search_page_controller.dart';
 import 'package:laundry_flutter/app/singleton/my_singleton.dart';
 import 'package:laundry_flutter/app/theme/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -33,6 +34,7 @@ Future<void> initializeApp() async {
   initializeMySingleton();
   await initializeAuthController();
   initializeProfil();
+  initializeSearch();
 }
 
 Future<void> initializeUserData() async {
@@ -52,6 +54,11 @@ Future<void> initializeAuthController() async {
 
 Future<void> initializeProfil() async {
   final ProfileController profileController = Get.put(ProfileController());
+}
+
+Future<void> initializeSearch() async {
+  final SearchPageController searchPageController =
+      Get.put(SearchPageController());
 }
 
 Future<String> determineInitialRoute() async {

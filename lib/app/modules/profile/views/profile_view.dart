@@ -14,8 +14,14 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ProfileView'),
-        centerTitle: true,
+        backgroundColor: Get.theme.primaryColor,
+        title: Text(
+          'Profil',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -26,18 +32,18 @@ class ProfileView extends GetView<ProfileController> {
               backgroundImage: AssetImage(
                   'assets/images/user_image.jpg'), // Ganti dengan gambar pengguna
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 10.0),
             Obx(() => Text(
                   userDataController.name.value,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 )),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 0.0),
             Obx(() => Text(
                   userDataController.email.value,
                   style: const TextStyle(fontSize: 16, color: Colors.grey),
                 )),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () {
                 homeController.logOutDialog(context);

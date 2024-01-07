@@ -1,23 +1,35 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:laundry_flutter/app/data/models/search_city_model.dart';
+import 'package:laundry_flutter/app/data/provider/app_services_manager.dart';
 
 class SearchPageController extends GetxController {
-  //TODO: Implement SearchPageController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  final Rx<SearchCityModel> searchCityModel = SearchCityModel().obs;
+  final TextEditingController searchController = TextEditingController();
+  final RxList<String> searchResults = <String>[].obs;
+  RxBool isLoading = false.obs;
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  Future<void> getSearchCity() async {
+    isLoading.value = true;
+    String city = searchController.text;
+    try {
+      SearchCityModel searchCityResponse =
+          await AppServiceManager.getSearchCity(city);
+      List<SearchCityData>? searchCityData = searchCityResponse.data;
 
-  void increment() => count.value++;
+      if (searchCityData != null) {
+        searchCityModel.value = SearchCityModel(data: searchCityData);
+        // Set nilai promoId dan descriptions dengan data promo pertama
+      }
+    } catch (e) {
+      print("Terjadi kesalahan saat mengambil data: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
