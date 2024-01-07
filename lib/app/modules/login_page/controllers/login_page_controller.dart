@@ -53,8 +53,6 @@ class LoginPageController extends GetxController {
               id: userId,
               username: name,
               email: userEmail,
-              createdAt: DateTime.now(),
-              updatedAt: DateTime.now(),
               token: token,
             ),
             token,

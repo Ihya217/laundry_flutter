@@ -25,17 +25,17 @@ class DashboardView extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           items: [
             _bottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                 ),
                 label: 'Home'),
             _bottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                 ),
                 label: 'Cari'),
             _bottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.person,
                 ),
                 label: 'Profile'),
