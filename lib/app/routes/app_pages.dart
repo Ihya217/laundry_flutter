@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../controller/auth_controller.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login_page/bindings/login_page_binding.dart';
@@ -17,7 +19,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
   final AuthController authController = Get.put(AuthController());
-  static const String home = '/home';
+  static const String dashboard = '/dashboard';
   static const String login = '/login';
 
   static const INITIAL = Routes.LOGIN_PAGE;
@@ -47,6 +49,11 @@ class AppPages {
       name: _Paths.SEARCH_PAGE,
       page: () => const SearchPageView(),
       binding: SearchPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.DASHBOARD,
+      page: () => DashboardView(),
+      binding: DashboardBinding(),
     ),
   ];
 }

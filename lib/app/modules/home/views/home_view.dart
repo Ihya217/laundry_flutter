@@ -6,7 +6,7 @@ import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  final AuthController authController = Get.put(AuthController());
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,35 +14,8 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            onPressed: () {
-              // Log Out
-              authController.logout();
-              Get.offAllNamed('/login'); // Navigasi kembali ke halaman login
-            },
-          ),
-        ],
+        actions: [],
       ),
-      bottomNavigationBar: Obx(() => BottomNavigationBar(
-            currentIndex: controller.selectedIndex,
-            onTap: controller.onItemTapped,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Cari',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
-          )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +29,7 @@ class HomeView extends GetView<HomeController> {
               onPressed: () {
                 controller.logOutDialog(context);
               },
-              child: Text('Contoh Tombol'),
+              child: Text('Log Out'),
             ),
           ],
         ),

@@ -61,7 +61,7 @@ class LoginPageController extends GetxController {
           );
           print(userDataController.token.value);
 
-          Get.offAllNamed('/home');
+          Get.offAllNamed('/dashboard');
         } else {
           Get.snackbar(
             'Login Gagal',

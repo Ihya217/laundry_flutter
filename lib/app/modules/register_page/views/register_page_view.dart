@@ -35,7 +35,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
                   ),
                 ),
                 Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/register.png',
                   width: 150,
                   height: 150,
                 ),
@@ -117,17 +117,6 @@ class RegisterPageView extends GetView<RegisterPageController> {
                           ),
                   ),
                 ),
-
-                // TextButton(
-                //   onPressed: () {
-                //     loginController.intentLupaPassword();
-                //     print('Lupa Password');
-                //   },
-                //   child: Text(
-                //     'Lupa Password',
-                //     style: TextStyle(color: Colors.blue[900], fontSize: 15),
-                //   ),
-                // ),
                 Container(
                   width: screenWidth,
                   height: 160,
