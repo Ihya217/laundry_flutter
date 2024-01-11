@@ -13,6 +13,7 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Get.theme.primaryColor,
       appBar: AppBar(
         backgroundColor: Get.theme.primaryColor,
         title: Text(

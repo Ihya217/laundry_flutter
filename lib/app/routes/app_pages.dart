@@ -19,8 +19,9 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
   final AuthController authController = Get.put(AuthController());
+  static const String home = '/home';
   static const String dashboard = '/dashboard';
-  static const String login = '/login';
+  static const String login = '/login-page';
   static const String search = '/search-page';
 
   static const INITIAL = Routes.LOGIN_PAGE;

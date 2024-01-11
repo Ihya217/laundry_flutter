@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:laundry_flutter/app/utils/custom_input_decoration.dart';
 
 import '../controllers/search_page_controller.dart';
 
@@ -8,6 +9,7 @@ class SearchPageView extends GetView<SearchPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Get.theme.primaryColor,
       appBar: AppBar(
         backgroundColor: Get.theme.primaryColor,
         title: Text(
@@ -51,15 +53,9 @@ class SearchPageView extends GetView<SearchPageController> {
 
   Widget _buildSearchField() {
     return TextField(
-      controller: controller.searchController,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 4.0),
-        hintText: 'Cari Kota',
-        prefixIcon: Icon(Icons.search),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-      ),
-    );
+        controller: controller.searchController,
+        style: TextStyle(color: Colors.white),
+        decoration: customInputDecoration('Ketik Nama Kota disini ...'));
   }
 
   Widget _buildSearchResults() {
@@ -70,11 +66,20 @@ class SearchPageView extends GetView<SearchPageController> {
           itemBuilder: (context, index) {
             var data = controller.searchCityModel.value.data![index];
             return Card(
+              color: Get.theme.primaryColor,
               elevation: 3, // Ubah nilai ini sesuai keinginan
               margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: ListTile(
-                title: Text(data.name ?? ''),
-                subtitle: Text(data.location ?? ''),
+                title: Text(
+                  data.name ?? '',
+                  style: Get.theme.textTheme.labelSmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  data.location ?? '',
+                  style: Get.theme.textTheme.labelSmall
+                      ?.copyWith(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
                 leading: CircleAvatar(
                   // Tambahkan gambar atau icon di sini
                   child: Icon(Icons.location_city),

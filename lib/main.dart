@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
+import 'package:laundry_flutter/app/modules/dashboard/bindings/dashboard_binding.dart';
+import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:laundry_flutter/app/modules/profile/controllers/profile_controller.dart';
 import 'package:laundry_flutter/app/modules/search_page/controllers/search_page_controller.dart';
 import 'package:laundry_flutter/app/singleton/my_singleton.dart';
@@ -13,6 +15,7 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   // await Firebase.initializeApp(
   //   options: options,
   // );
@@ -22,9 +25,10 @@ void main() async {
     GetMaterialApp(
       title: "Aplikasi",
       initialRoute: await determineInitialRoute(),
+      defaultGlobalState: true,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
-      theme: AppTheme().lightTheme(),
+      theme: AppTheme().darkTheme(),
     ),
   );
 }
@@ -35,6 +39,7 @@ Future<void> initializeApp() async {
   await initializeAuthController();
   initializeProfil();
   initializeSearch();
+  initializeDashboard();
 }
 
 Future<void> initializeUserData() async {
@@ -67,10 +72,15 @@ Future<void> initializeSearch() async {
       Get.put(SearchPageController());
 }
 
+Future<void> initializeDashboard() async {
+  final DashboardController dashboardController =
+      Get.put(DashboardController());
+}
+
 Future<String> determineInitialRoute() async {
   final prefs = await SharedPreferences.getInstance();
   final isUserLoggedIn = prefs.getBool(MySingleton().TAG_IS_LOGIN) ?? false;
-  String initialRoute = isUserLoggedIn ? AppPages.dashboard : AppPages.INITIAL;
+  String initialRoute = isUserLoggedIn ? AppPages.home : AppPages.INITIAL;
   // print(isUserLoggedIn.toString());
   return initialRoute;
 }

@@ -15,9 +15,12 @@ class HomeController extends GetxController {
   final DialogHelper dialogHelper = DialogHelper();
   final UserDataController userDataController = Get.put(UserDataController());
 
-  //promo
+  var tabIndex = 0;
 
-  //shop
+  void changeTabIndex(int index) {
+    tabIndex = index;
+    update();
+  }
 
   RxBool isLoading = false.obs;
 
