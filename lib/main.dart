@@ -25,7 +25,6 @@ void main() async {
     GetMaterialApp(
       title: "Aplikasi",
       initialRoute: await determineInitialRoute(),
-      defaultGlobalState: true,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
       theme: AppTheme().darkTheme(),

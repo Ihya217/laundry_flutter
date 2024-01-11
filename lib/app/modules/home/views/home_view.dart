@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:laundry_flutter/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:laundry_flutter/app/modules/pesanan/views/pesanan_view.dart';
 import 'package:laundry_flutter/app/modules/profile/views/profile_view.dart';
 import 'package:laundry_flutter/app/modules/search_page/views/search_page_view.dart';
 import '../controllers/home_controller.dart';
@@ -21,7 +21,12 @@ class HomeView extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(
             index: controller.tabIndex,
-            children: [DashboardView(), SearchPageView(), ProfileView()],
+            children: [
+              DashboardView(),
+              SearchPageView(),
+              PesananView(),
+              ProfileView()
+            ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -38,10 +43,16 @@ class HomeView extends StatelessWidget {
                 label: 'Cari'),
             _bottomNavigationBarItem(
                 icon: const Icon(
+                  Icons.local_laundry_service,
+                ),
+                label: 'Pesanan'),
+            _bottomNavigationBarItem(
+                icon: const Icon(
                   Icons.person,
                 ),
                 label: 'Profile'),
           ],
+          type: BottomNavigationBarType.fixed,
           onTap: controller.changeTabIndex,
           currentIndex: controller.tabIndex,
           selectedItemColor: Get.theme.highlightColor,
