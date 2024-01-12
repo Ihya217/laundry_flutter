@@ -173,20 +173,26 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                 ),
                               ],
                             ),
-                            Text(
-                              'Rp. ${controller.harga.value.toString()}',
-                              style: Get.theme.textTheme.titleLarge?.copyWith(
-                                  fontSize: 25,
-                                  color: Get.theme.highlightColor),
+                            Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: Text(
+                                'Rp. ${controller.harga.value.toString()}',
+                                style: Get.theme.textTheme.titleLarge?.copyWith(
+                                    fontSize: 25,
+                                    color: Get.theme.highlightColor),
+                              ),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              controller.deskripsi.value,
-                              textAlign: TextAlign.justify,
-                              style: Get.theme.textTheme.titleSmall
-                                  ?.copyWith(fontSize: 12),
+                            Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.justify,
+                                style: Get.theme.textTheme.titleSmall
+                                    ?.copyWith(fontSize: 12),
+                              ),
                             ),
                             SizedBox(
                               height: 15,

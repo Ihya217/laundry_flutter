@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:intl/intl.dart';
 import 'package:laundry_flutter/app/modules/pesanan/controllers/pesanan_controller.dart';
 
 class PesananCardWidget extends StatelessWidget {
@@ -30,7 +30,7 @@ class PesananCardWidget extends StatelessWidget {
                 child: SizedBox(
                   height: 90.0,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10),
                     ),
@@ -54,7 +54,8 @@ class PesananCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            pesanan.description ?? '',
+                            toBeginningOfSentenceCase(
+                                pesanan.description ?? ''),
                             style: const TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,

@@ -4,19 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:laundry_flutter/app/controller/user_data_controller.dart';
 import 'package:laundry_flutter/app/utils/promo_card_utils.dart';
 import 'package:laundry_flutter/app/utils/product_card_utils.dart';
+import 'package:laundry_flutter/app/utils/skeleton_list_item_horizontal.dart';
 
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
+  final UserDataController userDataController = Get.put(UserDataController());
   @override
   Widget build(BuildContext context) {
     final TextStyle titleLarge = Theme.of(context).textTheme.titleLarge!;
     final TextStyle titleSmall = Theme.of(context).textTheme.titleSmall!;
-    final TextStyle labelSmall = Theme.of(context).textTheme.labelSmall!;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: controller.refreshData,
+      ),
       backgroundColor: Get.theme.primaryColor,
       body: SingleChildScrollView(
         child: Stack(
@@ -52,13 +57,13 @@ class DashboardView extends GetView<DashboardController> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Ihya217',
+                                    userDataController.name.value,
                                     style: titleLarge.copyWith(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 22),
                                   ),
-                                  Text('Ihya217@gmail.com',
+                                  Text(userDataController.email.value,
                                       style: titleSmall.copyWith(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 15,
@@ -68,7 +73,10 @@ class DashboardView extends GetView<DashboardController> {
                             ),
                             const Spacer(),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.snackbar('Fitur Belum Tersedia',
+                                    'Mohon Menunggu Update Aplikasi yang Akan Datang');
+                              },
                               icon: const Icon(
                                 Icons.settings,
                                 color: Colors.white,
@@ -128,8 +136,13 @@ class DashboardView extends GetView<DashboardController> {
                                   height: 180.0,
                                   child: Obx(
                                     () => controller.isLoading.value
-                                        ? Center(
-                                            child: const Text('Memuat Data..'))
+                                        ? ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: 2,
+                                            itemBuilder: (context, index) {
+                                              return DarkSkeletonListItemHorizontal();
+                                            },
+                                          )
                                         : ListView.builder(
                                             scrollDirection: Axis.horizontal,
                                             itemCount: controller.promoModel
@@ -160,16 +173,19 @@ class DashboardView extends GetView<DashboardController> {
                                   height: 180.0,
                                   child: Obx(
                                     () => controller.isLoading.value
-                                        ? Center(
-                                            child: const Text('Memuat Data..'))
+                                        ? ListView.builder(
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: 2,
+                                            itemBuilder: (context, index) {
+                                              return DarkSkeletonListItemHorizontal();
+                                            },
+                                          )
                                         : ListView.builder(
                                             scrollDirection: Axis.horizontal,
                                             itemCount: controller.shopModel
                                                     .value.data?.length ??
                                                 0,
                                             itemBuilder: (context, index) {
-                                              var shop = controller
-                                                  .shopModel.value.data![index];
                                               return ProductCardWidget(
                                                   index: index);
                                             },

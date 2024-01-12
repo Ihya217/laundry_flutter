@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/register_page_controller.dart';
 import 'dart:ui';
 
-import 'package:laundry_flutter/app/modules/home/views/home_view.dart';
 import 'package:laundry_flutter/app/utils/custom_input_decoration.dart';
 
 class RegisterPageView extends GetView<RegisterPageController> {
   const RegisterPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final RegisterPageController registerPageController =
-        Get.put(RegisterPageController());
-    double screenWidth = MediaQuery.of(context).size.width;
     final TextStyle titleLarge = Theme.of(context).textTheme.titleLarge!;
     final TextStyle titleSmall = Theme.of(context).textTheme.titleSmall!;
     final TextStyle labelSmall = Theme.of(context).textTheme.labelSmall!;

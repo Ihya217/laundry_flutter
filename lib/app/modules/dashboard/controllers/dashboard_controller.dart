@@ -28,6 +28,11 @@ class DashboardController extends GetxController {
 
   RxBool isLoading = false.obs;
 
+  Future<void> refreshData() async {
+    await getPromoFromApi();
+    await getShopFromApi();
+  }
+
   Future<void> getPromoFromApi() async {
     isLoading.value = true;
     try {

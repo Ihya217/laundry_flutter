@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/data/models/promo_model.dart';
-import 'package:laundry_flutter/app/data/models/shop_model.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 
 class PromoDetailsController extends GetxController {
