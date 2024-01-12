@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 
 class PromoCardWidget extends StatelessWidget {
@@ -68,15 +69,16 @@ class PromoCardWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "\Rp.${promo.oldPrice}",
+                              "Rp.${NumberFormat("#,##0", "id_ID").format(promo.oldPrice)}",
                               style: Get.theme.textTheme.labelSmall?.copyWith(
                                   decoration: TextDecoration.lineThrough,
                                   color: Colors.grey),
                             ),
                             Text(
-                              "\Rp.${promo.newPrice}",
-                              style: Get.theme.textTheme.labelSmall
-                                  ?.copyWith(color: Get.theme.highlightColor),
+                              "Rp.${NumberFormat("#,##0", "id_ID").format(promo.newPrice)}",
+                              style: Get.theme.textTheme.labelSmall?.copyWith(
+                                color: Get.theme.highlightColor,
+                              ),
                             ),
                           ],
                         ),

@@ -7,8 +7,8 @@ import 'package:laundry_flutter/app/modules/home/controllers/home_controller.dar
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  final UserDataController userDataController = Get.put(UserDataController());
-  final HomeController homeController = Get.put(HomeController());
+  final UserDataController userDataController = Get.find();
+  final HomeController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {

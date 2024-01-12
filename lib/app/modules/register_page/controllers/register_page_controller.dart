@@ -31,12 +31,6 @@ class RegisterPageController extends GetxController {
         Map<String, dynamic> response = value;
 
         if (response.containsKey("data")) {
-          // Map<String, dynamic> data = response["data"];
-
-          // int userId = data["id"];
-          // String username = data["username"];
-          // String userEmail = data["email"];
-
           Get.offAllNamed('/login-page');
           Get.snackbar(
             'Registrasi Berhasil',

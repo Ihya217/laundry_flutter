@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -5,17 +7,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:laundry_flutter/app/modules/pesanan_details/controllers/pesanan_details_controller.dart';
+import 'package:terbilang_id/terbilang_id.dart';
 
 class PesananDetailsView extends GetView<PesananDetailsController> {
+  const PesananDetailsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Get.theme.highlightColor,
           child: Icon(
             Icons.chat_outlined,
             color: Get.theme.primaryColor,
           ),
-          onPressed: () {}),
+          onPressed: () {
+            Get.snackbar("Menuju Aplikasi WA", controller.wa.value);
+          }),
       backgroundColor: Get.theme.primaryColor,
       body: SingleChildScrollView(
         child: Stack(
@@ -29,7 +37,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
             ),
             Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 190,
                 ),
                 Padding(
@@ -49,7 +57,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                         ],
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +67,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                               style: Get.theme.textTheme.titleLarge
                                   ?.copyWith(fontSize: 25),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             // Row(
@@ -84,7 +92,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                               style: Get.theme.textTheme.titleLarge?.copyWith(
                                   fontSize: 14,
                                   color: Get.theme.highlightColor,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.normal),
                             ),
 
                             Text(
@@ -97,7 +105,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                   3, // Tambahkan ini agar teks tidak lebih dari 1 baris
                             ),
 
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -105,7 +113,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                               style: Get.theme.textTheme.titleLarge?.copyWith(
                                   fontSize: 14,
                                   color: Get.theme.highlightColor,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.normal),
                             ),
                             Text(
                               controller.alamatJemput.value,
@@ -116,7 +124,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                               maxLines:
                                   3, // Tambahkan ini agar teks tidak lebih dari 1 baris
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Row(
@@ -128,11 +136,11 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                       ?.copyWith(
                                           fontSize: 14,
                                           color: Get.theme.highlightColor,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.normal),
                                 ),
                                 Flexible(
                                   child: Text(
-                                    controller.berat.value.toString() + " Kg",
+                                    "${controller.berat.value} Kg",
                                     style: Get.theme.textTheme.titleLarge
                                         ?.copyWith(fontSize: 14),
                                     overflow: TextOverflow
@@ -143,6 +151,9 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                 ),
                               ],
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -152,7 +163,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                       ?.copyWith(
                                           fontSize: 14,
                                           color: Get.theme.highlightColor,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.normal),
                                 ),
                                 Flexible(
                                   child: Text(
@@ -173,13 +184,22 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                             Align(
                               alignment: AlignmentDirectional.centerEnd,
                               child: Text(
-                                'Rp. ${controller.harga.value.toString()}',
+                                "Rp.${NumberFormat("#,##0", "id_ID").format(controller.harga.value)}",
                                 style: Get.theme.textTheme.titleLarge?.copyWith(
                                     fontSize: 25,
                                     color: Get.theme.highlightColor),
                               ),
                             ),
-                            SizedBox(
+                            Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: Text(
+                                '${Terbilang().terbilang(controller.harga.value.toDouble())} Rupiah',
+                                style: Get.theme.textTheme.titleSmall?.copyWith(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
                               height: 5,
                             ),
                             Align(
@@ -191,7 +211,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                     ?.copyWith(fontSize: 12),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Row(
@@ -205,8 +225,11 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
+                                  onPressed: () {
+                                    Get.snackbar("Menuju Aplikasi WA",
+                                        controller.wa.value);
+                                  },
+                                  icon: const Icon(
                                     Icons.chat_outlined,
                                     color: Colors.white,
                                   ),

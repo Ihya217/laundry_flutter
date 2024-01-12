@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 
 class ProductCardWidget extends StatelessWidget {
@@ -80,9 +81,12 @@ class ProductCardWidget extends StatelessWidget {
                               )
                             ],
                           ),
-                          Text("\Rp.${product.price}",
-                              style: Get.theme.textTheme.labelSmall
-                                  ?.copyWith(color: Get.theme.highlightColor)),
+                          Text(
+                            "Rp.${NumberFormat("#,##0", "id_ID").format(product.price)}",
+                            style: Get.theme.textTheme.labelSmall?.copyWith(
+                              color: Get.theme.highlightColor,
+                            ),
+                          )
                         ],
                       ),
                     ],

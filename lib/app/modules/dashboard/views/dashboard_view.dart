@@ -11,7 +11,7 @@ import 'package:laundry_flutter/app/utils/skeleton_list_item_horizontal.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
-  final UserDataController userDataController = Get.put(UserDataController());
+  final UserDataController userDataController = Get.find();
 
   DashboardView({super.key});
   @override
@@ -54,18 +54,22 @@ class DashboardView extends GetView<DashboardController> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    userDataController.name.value,
-                                    style: titleLarge.copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 22),
-                                  ),
-                                  Text(userDataController.email.value,
-                                      style: titleSmall.copyWith(
+                                  Obx(() => Text(
+                                        userDataController.name.value,
+                                        style: titleLarge.copyWith(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22,
+                                        ),
+                                      )),
+                                  Obx(() => Text(
+                                        userDataController.email.value,
+                                        style: titleSmall.copyWith(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 15,
-                                          color: Colors.black)),
+                                          color: Colors.black,
+                                        ),
+                                      )),
                                 ],
                               ),
                             ),

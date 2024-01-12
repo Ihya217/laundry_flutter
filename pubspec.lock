@@ -613,6 +613,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  terbilang_id:
+    dependency: "direct main"
+    description:
+      name: terbilang_id
+      sha256: "2648670c80e258f2b517073e3b9891a1231ef31dc9752985130e1ccf724abcf4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   term_glyph:
     dependency: transitive
     description:

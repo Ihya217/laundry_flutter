@@ -12,14 +12,12 @@ class LoginPageView extends GetView<LoginPageController> {
   const LoginPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final LoginPageController loginController = Get.put(LoginPageController());
-    final LoginPageController homeController = Get.put(LoginPageController());
     final TextStyle titleLarge = Theme.of(context).textTheme.titleLarge!;
     final TextStyle titleSmall = Theme.of(context).textTheme.titleSmall!;
     final TextStyle labelSmall = Theme.of(context).textTheme.labelSmall!;
 
     return Obx(() {
-      if (homeController.isLoggedIn.value) {
+      if (controller.isLoggedIn.value) {
         return HomeView();
       } else {
         return GestureDetector(
@@ -95,7 +93,7 @@ class LoginPageView extends GetView<LoginPageController> {
                               ),
                               SizedBox(height: 3),
                               TextField(
-                                controller: loginController.usernameController,
+                                controller: controller.usernameController,
                                 decoration:
                                     customInputDecoration('Masukkan Email'),
                                 style: TextStyle(color: Colors.white),
@@ -115,10 +113,8 @@ class LoginPageView extends GetView<LoginPageController> {
                               TextField(
                                   decoration: customInputDecoration(
                                       'Masukkan Password'),
-                                  obscureText:
-                                      !loginController.showPassword.value,
-                                  controller:
-                                      loginController.passwordController,
+                                  obscureText: !controller.showPassword.value,
+                                  controller: controller.passwordController,
                                   style: TextStyle(color: Colors.white)),
                             ],
                           ),
@@ -150,10 +146,10 @@ class LoginPageView extends GetView<LoginPageController> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            loginController.login();
+                            controller.login();
                           },
                           style: ElevatedButton.styleFrom(),
-                          child: loginController.isLoading.value
+                          child: controller.isLoading.value
                               ? const CircularProgressIndicator(
                                   color: Colors
                                       .white, // Ubah warna sesuai kebutuhan

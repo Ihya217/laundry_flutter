@@ -20,7 +20,7 @@ class DashboardController extends GetxController {
   final Rx<ShopModel> shopModel = ShopModel().obs;
   final AuthController authController = AuthController();
   final DialogHelper dialogHelper = DialogHelper();
-  final UserDataController userDataController = Get.put(UserDataController());
+  final UserDataController userDataController = Get.find();
 
   //promo
 

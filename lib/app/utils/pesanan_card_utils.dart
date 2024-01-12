@@ -11,6 +11,7 @@ class PesananCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PesananController controller = Get.find();
+
     var pesanan = controller.pesananModel.value.data![index];
 
     return GestureDetector(
@@ -35,7 +36,7 @@ class PesananCardWidget extends StatelessWidget {
                       bottomLeft: Radius.circular(10),
                     ),
                     child: Image.network(
-                      'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//106/MTA-72642796/hoofla_setelan-baju-koko-anak-sarung-celana-navy-maroon-by-hoofla-nkh-05_full01.jpg',
+                      'https://media.karousell.com/media/photos/products/2023/11/12/baju_koko_hitam_1699748685_a6913b8c.jpg',
                       fit: BoxFit.fill,
                       width: double.infinity,
                       height: double.infinity,
@@ -84,7 +85,7 @@ class PesananCardWidget extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                "\Rp.${pesanan.total}",
+                                "Rp.${NumberFormat("#,##0", "id_ID").format(pesanan.total)}",
                                 style: Get.theme.textTheme.labelSmall?.copyWith(
                                   color: Get.theme.highlightColor,
                                 ),

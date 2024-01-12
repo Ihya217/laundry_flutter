@@ -10,8 +10,8 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 
-  final AuthController authController = AuthController();
-  final UserDataController userDataController = UserDataController();
+  final AuthController authController = Get.find();
+  final UserDataController userDataController = Get.find();
 
   void logOut() {
     authController.logout();

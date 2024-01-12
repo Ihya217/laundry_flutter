@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/promo_details_controller.dart';
 
@@ -12,12 +15,13 @@ class PromoDetailsView extends GetView<PromoDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Get.theme.highlightColor,
           child: Icon(
             Icons.chat_outlined,
             color: Get.theme.primaryColor,
           ),
           onPressed: () {
-            controller.loadDataPromo();
+            Get.snackbar("Menuju Aplikasi WA", controller.wa.value);
           }),
       backgroundColor: Get.theme.primaryColor,
       body: SingleChildScrollView(
@@ -98,7 +102,7 @@ class PromoDetailsView extends GetView<PromoDetailsController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Rp. ${controller.hargaDulu.value.toString()}',
+                                  "Rp.${NumberFormat("#,##0", "id_ID").format(controller.hargaDulu.value)}",
                                   style: Get.theme.textTheme.titleLarge
                                       ?.copyWith(
                                           fontSize: 25,
@@ -107,7 +111,7 @@ class PromoDetailsView extends GetView<PromoDetailsController> {
                                               TextDecoration.lineThrough),
                                 ),
                                 Text(
-                                  'Rp. ${controller.hargaSekarang.value.toString()}',
+                                  "Rp.${NumberFormat("#,##0", "id_ID").format(controller.hargaSekarang.value)}",
                                   style: Get.theme.textTheme.titleLarge
                                       ?.copyWith(
                                           fontSize: 25,
@@ -138,7 +142,10 @@ class PromoDetailsView extends GetView<PromoDetailsController> {
                             Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.snackbar("Menuju Aplikasi WA",
+                                        controller.wa.value);
+                                  },
                                   child: Text(
                                     'Whatsapp',
                                     style: Get.theme.textTheme.titleSmall

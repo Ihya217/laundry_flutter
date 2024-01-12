@@ -4,6 +4,7 @@ import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_cont
 
 class ShopDetailsController extends GetxController {
   final DashboardController dashboardController = Get.find();
+
   @override
   void onInit() {
     super.onInit();

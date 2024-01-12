@@ -14,10 +14,10 @@ class HomeController extends GetxController {
   final Rx<ShopModel> shopModel = ShopModel().obs;
   final AuthController authController = AuthController();
   final DialogHelper dialogHelper = DialogHelper();
-  final UserDataController userDataController = Get.put(UserDataController());
-  final PesananController pesananController = Get.put(PesananController());
-  final DashboardController dashboardController =
-      Get.put(DashboardController());
+
+  final UserDataController userDataController = Get.find();
+  final PesananController pesananController = Get.find();
+  final DashboardController dashboardController = Get.find();
 
   var tabIndex = 0;
 
@@ -51,8 +51,12 @@ class HomeController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
+    await userDataController.loadUserData();
+    await authController.isLoggedIn.value;
+
     await dashboardController.getPromoFromApi();
     await dashboardController.getShopFromApi();
+    await authController.checkLoginStatus();
   }
 
   void logOutDialog(BuildContext context) {

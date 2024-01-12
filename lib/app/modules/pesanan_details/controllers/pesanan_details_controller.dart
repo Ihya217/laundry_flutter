@@ -37,6 +37,7 @@ class PesananDetailsController extends GetxController {
       harga.value = currentPesananData.total!;
       kodeClaim.value = currentPesananData.claimCode!;
       status.value = currentPesananData.status!;
+      wa.value = currentPesananData.shop!.whatsapp!;
     } else {
       print("Data toko tidak tersedia atau indeks diluar rentang yang valid");
     }

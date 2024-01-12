@@ -81,9 +81,12 @@ class SearchPageView extends GetView<SearchPageController> {
                   style: Get.theme.textTheme.labelSmall
                       ?.copyWith(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
-                leading: const CircleAvatar(
-                  // Tambahkan gambar atau icon di sini
-                  child: Icon(Icons.location_city),
+                leading: CircleAvatar(
+                  backgroundColor: Get.theme.highlightColor,
+                  child: Icon(
+                    Icons.location_city,
+                    color: Get.theme.primaryColor,
+                  ),
                 ),
                 onTap: () {
                   Get.snackbar('Item Selected', data.name ?? '',

@@ -3,13 +3,14 @@ import 'package:laundry_flutter/app/data/models/promo_model.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 
 class PromoDetailsController extends GetxController {
+  final DashboardController dashboardController = Get.find();
+
   @override
   void onInit() {
     super.onInit();
     loadDataPromo();
   }
 
-  final DashboardController dashboardController = Get.find();
   RxString nama = ''.obs;
   RxString alamat = ''.obs;
   RxString deskripsi = ''.obs;

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/shop_details_controller.dart';
 
@@ -11,12 +12,13 @@ class ShopDetailsView extends GetView<ShopDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Get.theme.highlightColor,
           child: Icon(
             Icons.chat_outlined,
             color: Get.theme.primaryColor,
           ),
           onPressed: () {
-            controller.loadDataShop();
+            Get.snackbar("Menuju Aplikasi WA", controller.wa.value);
           }),
       backgroundColor: Get.theme.primaryColor,
       body: SingleChildScrollView(
@@ -94,7 +96,7 @@ class ShopDetailsView extends GetView<ShopDetailsController> {
                               )
                             ]),
                             Text(
-                              'Rp. ${controller.harga.value.toString()}',
+                              "Rp.${NumberFormat("#,##0", "id_ID").format(controller.harga.value)}",
                               style: Get.theme.textTheme.titleLarge?.copyWith(
                                   fontSize: 25,
                                   color: Get.theme.highlightColor),
@@ -122,7 +124,10 @@ class ShopDetailsView extends GetView<ShopDetailsController> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.snackbar("Menuju Aplikasi WA",
+                                        controller.wa.value);
+                                  },
                                   icon: Icon(
                                     Icons.chat_outlined,
                                     color: Colors.white,
