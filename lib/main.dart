@@ -5,6 +5,7 @@ import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
 import 'package:laundry_flutter/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:laundry_flutter/app/modules/pesanan/controllers/pesanan_controller.dart';
 import 'package:laundry_flutter/app/modules/profile/controllers/profile_controller.dart';
 import 'package:laundry_flutter/app/modules/search_page/controllers/search_page_controller.dart';
 import 'package:laundry_flutter/app/singleton/my_singleton.dart';
@@ -39,6 +40,7 @@ Future<void> initializeApp() async {
   initializeProfil();
   initializeSearch();
   initializeDashboard();
+  initializePesanan();
 }
 
 Future<void> initializeUserData() async {
@@ -64,6 +66,10 @@ Future<void> initializeAuthController() async {
 
 Future<void> initializeProfil() async {
   final ProfileController profileController = Get.put(ProfileController());
+}
+
+Future<void> initializePesanan() async {
+  final PesananController pesananController = Get.put(PesananController());
 }
 
 Future<void> initializeSearch() async {

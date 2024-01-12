@@ -64,7 +64,10 @@ class HomeView extends StatelessWidget {
   }
 }
 
-_bottomNavigationBarItem({required icon, String? label}) {
+_bottomNavigationBarItem({
+  required icon,
+  String? label,
+}) {
   return BottomNavigationBarItem(
     icon: icon,
     label: label,

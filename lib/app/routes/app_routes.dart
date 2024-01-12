@@ -12,6 +12,7 @@ abstract class Routes {
   static const SHOP_DETAILS = _Paths.SHOP_DETAILS;
   static const PROMO_DETAILS = _Paths.PROMO_DETAILS;
   static const PESANAN = _Paths.PESANAN;
+  static const PESANAN_DETAILS = _Paths.PESANAN_DETAILS;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const SHOP_DETAILS = '/shop-details';
   static const PROMO_DETAILS = '/promo-details';
   static const PESANAN = '/pesanan';
+  static const PESANAN_DETAILS = '/pesanan-details';
 }

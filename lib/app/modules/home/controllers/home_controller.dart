@@ -7,6 +7,7 @@ import 'package:laundry_flutter/app/data/models/shop_model.dart';
 import 'package:laundry_flutter/app/data/models/user_data.dart';
 import 'package:laundry_flutter/app/data/provider/app_services_manager.dart';
 import 'package:laundry_flutter/app/modules/home/controllers/helper/dialog_helper.dart';
+import 'package:laundry_flutter/app/modules/pesanan/controllers/pesanan_controller.dart';
 
 class HomeController extends GetxController {
   final Rx<PromoModel> promoModel = PromoModel().obs;
@@ -14,11 +15,15 @@ class HomeController extends GetxController {
   final AuthController authController = AuthController();
   final DialogHelper dialogHelper = DialogHelper();
   final UserDataController userDataController = Get.put(UserDataController());
+  final PesananController pesananController = Get.put(PesananController());
 
   var tabIndex = 0;
 
   void changeTabIndex(int index) {
     tabIndex = index;
+    if (index == 2) {
+      getPesanan();
+    }
     update();
   }
 
@@ -59,6 +64,10 @@ class HomeController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void getPesanan() {
+    pesananController.getPesananFromApi();
   }
 
   void logOut() {

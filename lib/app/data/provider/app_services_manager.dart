@@ -1,3 +1,4 @@
+import 'package:laundry_flutter/app/data/provider/end_point/get_pesanan.dart';
 import 'package:laundry_flutter/app/data/provider/end_point/get_promo.dart';
 import 'package:laundry_flutter/app/data/provider/end_point/get_search_city.dart';
 import 'package:laundry_flutter/app/data/provider/end_point/get_shop.dart';
@@ -10,6 +11,7 @@ class AppServiceManager {
   static final GetPromo _getPromo = GetPromo();
   static final GetShop _getShop = GetShop();
   static final GetSearchCity _getSearchCity = GetSearchCity();
+  static final GetPesanan _getPesanan = GetPesanan();
 
   static Future<dynamic> login(String email, String password) async {
     return _login.postLogin(email, password);
@@ -30,5 +32,9 @@ class AppServiceManager {
 
   static Future<dynamic> getSearchCity(String city) async {
     return _getSearchCity.getSearchCity(city);
+  }
+
+  static Future<dynamic> getPesanan() async {
+    return _getPesanan.getPesanan();
   }
 }

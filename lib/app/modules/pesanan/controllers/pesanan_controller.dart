@@ -1,23 +1,30 @@
 import 'package:get/get.dart';
+import 'package:laundry_flutter/app/data/models/pesanan_model.dart';
+import 'package:laundry_flutter/app/data/provider/app_services_manager.dart';
 
 class PesananController extends GetxController {
-  //TODO: Implement PesananController
-
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  final Rx<PesananModel> pesananModel = PesananModel().obs;
+  RxBool isLoading = false.obs;
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  Future<void> getPesananFromApi() async {
+    isLoading.value = true;
+    try {
+      PesananModel pesananModelResponse = await AppServiceManager.getPesanan();
+      List<PesananData>? pesananData = pesananModelResponse.data;
 
-  void increment() => count.value++;
+      if (pesananData != null) {
+        pesananModel.value = PesananModel(data: pesananData);
+        if (pesananData.isNotEmpty) {}
+      }
+    } catch (e) {
+      print("Terjadi kesalahan saat mengambil data: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

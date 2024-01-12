@@ -9,6 +9,8 @@ import '../modules/login_page/bindings/login_page_binding.dart';
 import '../modules/login_page/views/login_page_view.dart';
 import '../modules/pesanan/bindings/pesanan_binding.dart';
 import '../modules/pesanan/views/pesanan_view.dart';
+import '../modules/pesanan_details/bindings/pesanan_details_binding.dart';
+import '../modules/pesanan_details/views/pesanan_details_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/promo_details/bindings/promo_details_binding.dart';
@@ -31,6 +33,7 @@ class AppPages {
   static const String search = '/search-page';
   static const String shopDetails = '/shop-details';
   static const String promoDetails = '/promo-details';
+  static const String pesananDetails = '/pesanan-details';
 
   static const INITIAL = Routes.LOGIN_PAGE;
 
@@ -79,6 +82,11 @@ class AppPages {
       name: _Paths.PESANAN,
       page: () => const PesananView(),
       binding: PesananBinding(),
+    ),
+    GetPage(
+      name: _Paths.PESANAN_DETAILS,
+      page: () => PesananDetailsView(),
+      binding: PesananDetailsBinding(),
     ),
   ];
 }
