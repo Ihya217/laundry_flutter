@@ -31,8 +31,8 @@ class ShopDetailsView extends GetView<ShopDetailsController> {
             ),
             Column(
               children: [
-                SizedBox(
-                  height: 150,
+                const SizedBox(
+                  height: 190,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 7),
@@ -135,7 +135,21 @@ class ShopDetailsView extends GetView<ShopDetailsController> {
                       )),
                 ),
               ],
-            )
+            ),
+            Positioned(
+              top: 20.0, // Adjust the top position based on your requirements
+              left: 10.0, // Adjust the left position based on your requirements
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Get.theme.highlightColor,
+                ),
+                onPressed: () {
+                  // Add your onPressed logic here
+                  Navigator.pop(context);
+                },
+              ),
+            ),
           ],
         ),
       ),

@@ -9,7 +9,7 @@ class RegisterPageController extends GetxController {
   var showPassword = false.obs;
   RxBool isLoading = false.obs;
 
-  final authController = AuthController(); // Buat instance AuthController
+  final authController = AuthController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -21,8 +21,7 @@ class RegisterPageController extends GetxController {
       isLoading.value = true;
 
       String username = usernameController.text;
-      String email = emailController
-          .text; // Ganti dengan emailController sesuai dengan controller yang sesuai
+      String email = emailController.text;
       String password = passwordController.text;
 
       var value = await AppServiceManager.register(username, email, password);
@@ -32,11 +31,11 @@ class RegisterPageController extends GetxController {
         Map<String, dynamic> response = value;
 
         if (response.containsKey("data")) {
-          Map<String, dynamic> data = response["data"];
+          // Map<String, dynamic> data = response["data"];
 
-          int userId = data["id"];
-          String username = data["username"];
-          String userEmail = data["email"];
+          // int userId = data["id"];
+          // String username = data["username"];
+          // String userEmail = data["email"];
 
           Get.offAllNamed('/login-page');
           Get.snackbar(
@@ -69,10 +68,6 @@ class RegisterPageController extends GetxController {
         );
       }
     } catch (e) {
-      // Tangani kesalahan parsing atau kesalahan lainnya
-      print("Terjadi kesalahan saat parsing respons: $e");
-      print("Email: ${emailController.text}"); // Ganti dengan emailController
-      print("Password: ${passwordController.text}");
       Get.snackbar(
         'Registrasi Gagal',
         'Email atau Password salah',

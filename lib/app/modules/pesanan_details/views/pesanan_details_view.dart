@@ -30,7 +30,7 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
             Column(
               children: [
                 SizedBox(
-                  height: 150,
+                  height: 190,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 7),
@@ -78,51 +78,46 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                             //     ),
                             //   ],
                             // ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Alamat Diantar  : ',
-                                  style: Get.theme.textTheme.titleLarge
-                                      ?.copyWith(
-                                          fontSize: 14,
-                                          color: Get.theme.highlightColor),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    controller.alamatAntar.value,
-                                    style: Get.theme.textTheme.titleLarge
-                                        ?.copyWith(fontSize: 14),
-                                    overflow: TextOverflow
-                                        .ellipsis, // Tambahkan ini agar teks terpotong dan ditampilkan sebagai elipsis jika overflow
-                                    maxLines:
-                                        3, // Tambahkan ini agar teks tidak lebih dari 1 baris
-                                  ),
-                                ),
-                              ],
+
+                            Text(
+                              'Alamat Diantar  : ',
+                              style: Get.theme.textTheme.titleLarge?.copyWith(
+                                  fontSize: 14,
+                                  color: Get.theme.highlightColor,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Alamat Jemput  : ',
-                                  style: Get.theme.textTheme.titleLarge
-                                      ?.copyWith(
-                                          fontSize: 14,
-                                          color: Get.theme.highlightColor),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    controller.alamatJemput.value,
-                                    style: Get.theme.textTheme.titleLarge
-                                        ?.copyWith(fontSize: 14),
-                                    overflow: TextOverflow
-                                        .ellipsis, // Tambahkan ini agar teks terpotong dan ditampilkan sebagai elipsis jika overflow
-                                    maxLines:
-                                        3, // Tambahkan ini agar teks tidak lebih dari 1 baris
-                                  ),
-                                ),
-                              ],
+
+                            Text(
+                              controller.alamatAntar.value,
+                              style: Get.theme.textTheme.titleLarge
+                                  ?.copyWith(fontSize: 14),
+                              overflow: TextOverflow
+                                  .ellipsis, // Tambahkan ini agar teks terpotong dan ditampilkan sebagai elipsis jika overflow
+                              maxLines:
+                                  3, // Tambahkan ini agar teks tidak lebih dari 1 baris
+                            ),
+
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Alamat Jemput  : ',
+                              style: Get.theme.textTheme.titleLarge?.copyWith(
+                                  fontSize: 14,
+                                  color: Get.theme.highlightColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              controller.alamatJemput.value,
+                              style: Get.theme.textTheme.titleLarge
+                                  ?.copyWith(fontSize: 14),
+                              overflow: TextOverflow
+                                  .ellipsis, // Tambahkan ini agar teks terpotong dan ditampilkan sebagai elipsis jika overflow
+                              maxLines:
+                                  3, // Tambahkan ini agar teks tidak lebih dari 1 baris
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +127,8 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                   style: Get.theme.textTheme.titleLarge
                                       ?.copyWith(
                                           fontSize: 14,
-                                          color: Get.theme.highlightColor),
+                                          color: Get.theme.highlightColor,
+                                          fontWeight: FontWeight.bold),
                                 ),
                                 Flexible(
                                   child: Text(
@@ -155,7 +151,8 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                                   style: Get.theme.textTheme.titleLarge
                                       ?.copyWith(
                                           fontSize: 14,
-                                          color: Get.theme.highlightColor),
+                                          color: Get.theme.highlightColor,
+                                          fontWeight: FontWeight.bold),
                                 ),
                                 Flexible(
                                   child: Text(
@@ -221,7 +218,21 @@ class PesananDetailsView extends GetView<PesananDetailsController> {
                       )),
                 ),
               ],
-            )
+            ),
+            Positioned(
+              top: 20.0, // Adjust the top position based on your requirements
+              left: 10.0, // Adjust the left position based on your requirements
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Get.theme.highlightColor,
+                ),
+                onPressed: () {
+                  // Add your onPressed logic here
+                  Navigator.pop(context);
+                },
+              ),
+            ),
           ],
         ),
       ),

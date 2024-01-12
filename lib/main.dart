@@ -1,9 +1,10 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/controller/auth_controller.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
-import 'package:laundry_flutter/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:laundry_flutter/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:laundry_flutter/app/modules/pesanan/controllers/pesanan_controller.dart';
 import 'package:laundry_flutter/app/modules/profile/controllers/profile_controller.dart';
@@ -17,10 +18,6 @@ import 'app/routes/app_pages.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp(
-  //   options: options,
-  // );
-  // await FirebaseApi().initNotifications();
   await initializeApp();
   runApp(
     GetMaterialApp(
@@ -46,10 +43,8 @@ Future<void> initializeApp() async {
 Future<void> initializeUserData() async {
   final UserDataController userDataController = Get.put(UserDataController());
   await userDataController.loadUserData();
-
   String token = userDataController.token.value;
   String nama = userDataController.name.value;
-
   print(token);
   print(nama);
 }
@@ -86,6 +81,5 @@ Future<String> determineInitialRoute() async {
   final prefs = await SharedPreferences.getInstance();
   final isUserLoggedIn = prefs.getBool(MySingleton().TAG_IS_LOGIN) ?? false;
   String initialRoute = isUserLoggedIn ? AppPages.home : AppPages.INITIAL;
-  // print(isUserLoggedIn.toString());
   return initialRoute;
 }

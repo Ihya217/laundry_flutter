@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
 import 'package:laundry_flutter/app/controller/user_data_controller.dart';
 import 'package:laundry_flutter/app/utils/promo_card_utils.dart';
@@ -13,18 +12,17 @@ import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
   final UserDataController userDataController = Get.put(UserDataController());
+
+  DashboardView({super.key});
   @override
   Widget build(BuildContext context) {
     final TextStyle titleLarge = Theme.of(context).textTheme.titleLarge!;
     final TextStyle titleSmall = Theme.of(context).textTheme.titleSmall!;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: controller.refreshData,
-      ),
       backgroundColor: Get.theme.primaryColor,
-      body: SingleChildScrollView(
-        child: Stack(
+      body: ListView(children: [
+        Stack(
           children: [
             Image.asset("assets/images/header_started.png"),
             BackdropFilter(
@@ -149,8 +147,6 @@ class DashboardView extends GetView<DashboardController> {
                                                     .value.data?.length ??
                                                 0,
                                             itemBuilder: (context, index) {
-                                              var promo = controller.promoModel
-                                                  .value.data![index];
                                               return PromoCardWidget(
                                                   index: index);
                                             },
@@ -202,7 +198,7 @@ class DashboardView extends GetView<DashboardController> {
             ),
           ],
         ),
-      ),
+      ]),
 
       // body: SafeArea(
       //   child: IndexedStack(

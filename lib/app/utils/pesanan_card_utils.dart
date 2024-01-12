@@ -61,14 +61,13 @@ class PesananCardWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 2.0),
+                          const SizedBox(height: 5.0),
                           Text(
-                            pesanan.pickupAddress ?? '',
+                            'Status :',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: Get.theme.textTheme.labelSmall,
                           ),
-                          const SizedBox(height: 2.0),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

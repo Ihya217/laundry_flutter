@@ -12,7 +12,7 @@ class SearchPageView extends GetView<SearchPageController> {
       backgroundColor: Get.theme.primaryColor,
       appBar: AppBar(
         backgroundColor: Get.theme.primaryColor,
-        title: Text(
+        title: const Text(
           'Lokasi Cabang',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class SearchPageView extends GetView<SearchPageController> {
                 Expanded(
                   child: _buildSearchField(),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Get.theme.primaryColor,
@@ -39,7 +39,7 @@ class SearchPageView extends GetView<SearchPageController> {
                     controller.resetModel();
                     controller.getSearchCity();
                   },
-                  child: Icon(Icons.search),
+                  child: Icon(Icons.search, color: Get.theme.highlightColor),
                 ),
               ],
             ),
@@ -54,7 +54,7 @@ class SearchPageView extends GetView<SearchPageController> {
   Widget _buildSearchField() {
     return TextField(
         controller: controller.searchController,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         decoration: customInputDecoration('Ketik Nama Kota disini ...'));
   }
 
@@ -68,7 +68,8 @@ class SearchPageView extends GetView<SearchPageController> {
             return Card(
               color: Get.theme.primaryColor,
               elevation: 3, // Ubah nilai ini sesuai keinginan
-              margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              margin:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: ListTile(
                 title: Text(
                   data.name ?? '',
@@ -80,7 +81,7 @@ class SearchPageView extends GetView<SearchPageController> {
                   style: Get.theme.textTheme.labelSmall
                       ?.copyWith(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   // Tambahkan gambar atau icon di sini
                   child: Icon(Icons.location_city),
                 ),

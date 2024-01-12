@@ -16,7 +16,7 @@ class ProfileView extends GetView<ProfileController> {
       backgroundColor: Get.theme.primaryColor,
       appBar: AppBar(
         backgroundColor: Get.theme.primaryColor,
-        title: Text(
+        title: const Text(
           'Profil',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -24,36 +24,43 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 50.0,
-              backgroundImage: AssetImage(
-                  'assets/images/user_image.jpg'), // Ganti dengan gambar pengguna
-            ),
-            const SizedBox(height: 10.0),
-            Obx(() => Text(
-                  userDataController.name.value,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                )),
-            const SizedBox(height: 0.0),
-            Obx(() => Text(
-                  userDataController.email.value,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
-                )),
-            const SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                homeController.logOutDialog(context);
-              },
-              child: const Text('Log Out'),
-            ),
-          ],
+      body: ListView(children: [
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage(
+                    'assets/images/user_image.jpg'), // Ganti dengan gambar pengguna
+              ),
+              const SizedBox(height: 10.0),
+              Obx(() => Text(
+                    userDataController.name.value,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  )),
+              const SizedBox(height: 0.0),
+              Obx(() => Text(
+                    userDataController.email.value,
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  )),
+              const SizedBox(height: 10.0),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Get.theme.highlightColor),
+                onPressed: () {
+                  homeController.logOutDialog(context);
+                },
+                child: Text(
+                  'Log Out',
+                  style: TextStyle(color: Get.theme.primaryColor),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+      ]),
     );
   }
 }

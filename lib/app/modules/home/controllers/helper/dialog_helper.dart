@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DialogHelper {
   void logOutDialog(BuildContext context, Function logOut) {
@@ -6,21 +7,35 @@ class DialogHelper {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Konfirmasi LogOut'),
+          backgroundColor: Get.theme.primaryColor,
+          title: Text(
+            'Konfirmasi Log Out',
+            style: Get.theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           content: const Text('Anda yakin ingin keluar dari aplikasi?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Batal'),
+              child: Text(
+                'Batal',
+                style: Get.theme.textTheme.titleSmall?.copyWith(
+                    color: Get.theme.primaryColor, fontWeight: FontWeight.bold),
+              ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 logOut();
               },
-              child: const Text('Ya'),
+              child: Text(
+                'Ya',
+                style: Get.theme.textTheme.titleSmall?.copyWith(
+                    color: Get.theme.primaryColor, fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         );

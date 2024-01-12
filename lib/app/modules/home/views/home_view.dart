@@ -18,15 +18,20 @@ class HomeView extends StatelessWidget {
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         backgroundColor: Get.theme.primaryColor,
-        body: SafeArea(
-          child: IndexedStack(
-            index: controller.tabIndex,
-            children: [
-              DashboardView(),
-              SearchPageView(),
-              PesananView(),
-              ProfileView()
-            ],
+        body: RefreshIndicator(
+          onRefresh: controller.refreshData,
+          color: Get.theme.highlightColor,
+          backgroundColor: Get.theme.primaryColor,
+          child: SafeArea(
+            child: IndexedStack(
+              index: controller.tabIndex,
+              children: [
+                DashboardView(),
+                SearchPageView(),
+                PesananView(),
+                ProfileView()
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
